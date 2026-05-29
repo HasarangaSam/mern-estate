@@ -16,12 +16,6 @@ function Profile() {
   const fileRef = useRef(null);
   const [formData, setFormData] = useState({});
 
-  useEffect(() => {
-    if (file) {
-      handleFileUpload(file);
-    }
-  }, [file]);
-
   const handleFileUpload = (file) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
@@ -45,6 +39,12 @@ function Profile() {
       },
     );
   };
+
+  useEffect(() => {
+    if (file) {
+      handleFileUpload(file);
+    }
+  }, [file]);
 
   return (
     <div className="p-3 max-w-lg mx-auto">
