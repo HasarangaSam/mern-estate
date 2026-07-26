@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
-const location = useLocation();
 
 export default function Search() {
   const navigate = useNavigate();
@@ -11,7 +10,7 @@ export default function Search() {
     parking: false,
     furnished: false,
     offer: false,
-    sort: "created_at",
+    sort: "createdAt",
     order: "desc",
   });
 
@@ -44,7 +43,7 @@ export default function Search() {
         parking: parkingFromUrl === "true" ? true : false,
         furnished: furnishedFromUrl === "true" ? true : false,
         offer: offerFromUrl === "true" ? true : false,
-        sort: sortFromUrl || "created_at",
+        sort: sortFromUrl || "createdAt",
         order: orderFromUrl || "desc",
       });
     }
@@ -93,7 +92,7 @@ export default function Search() {
     }
 
     if (e.target.id === "sort_order") {
-      const sort = e.target.value.split("_")[0] || "created_at";
+      const sort = e.target.value.split("_")[0] || "createdAt";
 
       const order = e.target.value.split("_")[1] || "desc";
 
